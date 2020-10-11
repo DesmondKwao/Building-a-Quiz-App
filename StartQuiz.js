@@ -1,6 +1,7 @@
 const question = document.getElementById("question");
-const choices = Array.from(document.getElementsByClassName("choice-text"));
-const questionCounterText = document.getElementById("questionCounter");
+const options = Array.from(document.getElementsByClassName("option-text"));
+const moveText = document.getElementById("moveText");
+const moveBarFull= document.getElementById("moveBarFull");
 const scoreText = document.getElementById("score");
 
 let currentQuestion = {};
@@ -12,44 +13,44 @@ let NewQuesions = [];
 let questions = [
     {
         question: "How many computer languages are in use?",
-        choice1: '2000',
-        choice2: '300',
-        choice3: '90',
-        choice4:  '500',
+        option1: '2000',
+        option2: '300',
+        option3: '90',
+        option4:  '500',
         answer: 1
     },
     {
         question: "What does the Internet prefix WWW stand for?",
-        choice1: "Wide Width Wickets",
-        choice2: "World wide web",
-        choice3: 'Worldwide',
-        choice4: "Western Washington World",
+        option1: "Wide Width Wickets",
+        option2: "World wide web",
+        option3: 'Worldwide',
+        option4: "Western Washington World",
         answer: 2
     },
     {
         question: "How many computer languages are in use?",
-        choice1:'ENIAC',
-        choice2:'UNIVAC',
-        choice3:'NASA',
-        choice4:'SAGE',
+        option1:'ENIAC',
+        option2:'UNIVAC',
+        option3:'NASA',
+        option4:'SAGE',
         answer: 3
     },
     {
         question: "Which of these products is not made by the Apple Corporation?",
-        choice1: 'IMAX',
-        choice2: 'iPhone',
-        choice3:'iMac',
-        choice4:'iPod',
+        option1: 'IMAX',
+        option2: 'iPhone',
+        option3:'iMac',
+        option4:'iPod',
         answer: 1
     },
     {
         question: "To which of these devices is the cellular telephone most closely related?",
-        choice1: 'Telegraph',
-        choice2: 'Radio',
-        choice3: "Light bulb",
-        choice4: 'Telescope',
+        option1: 'Telegraph',
+        option2: 'Radio',
+        option3: "Light bulb",
+        option4: 'Telescope',
         answer: 2
-    },    
+    },
 ];
 const correct_marks = 20;
 const total_questions = 5;
@@ -61,30 +62,35 @@ startGame = () => {
 };
 getNewQuestion = () => {
   if (NewQuesions.length === 0 || questionCounter >= total_questions) {
-    //go to the end page
-    return window.location.assign("/end.html");
+    localStorage.setItem("mostRecentScore", score);
+   return window.location.assign("finish.html");
   }
+
   questionCounter++;
+
+  console.log = (questionCounter/total_questions);
+
   const questionIndex = Math.floor(Math.random() * NewQuesions.length);
   currentQuestion = NewQuesions[questionIndex];
   question.innerText = currentQuestion.question;
 
-  choices.forEach(choice => {
-    const number = choice.dataset["number"];
-    choice.innerText = currentQuestion["choice" + number];
+
+  options.forEach(option => {
+    const number = option.dataset["number"];
+    option.innerText = currentQuestion["option" + number];
   });
 
   NewQuesions.splice(questionIndex, 1);
   acceptingAnswers = true;
 };
 
-choices.forEach(choice => {
-  choice.addEventListener("click", e => {
+options.forEach(option => {
+  option.addEventListener("click", e => {
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
-    const selectedChoice = e.target;
-    const selectedAnswer = selectedChoice.dataset["number"];
+    const selectedoption = e.target;
+    const selectedAnswer = selectedoption.dataset["number"];
 
     if( selectedAnswer == currentQuestion.answer){
         hightlight = 'correct';
@@ -95,10 +101,10 @@ choices.forEach(choice => {
         incrementScore(correct_marks);
       }
 
-    selectedChoice.parentElement.classList.add(hightlight);
+    selectedoption.parentElement.classList.add(hightlight);
 
     setTimeout(() => {
-      selectedChoice.parentElement.classList.remove(hightlight);
+      selectedoption.parentElement.classList.remove(hightlight);
       getNewQuestion();
     }, 800);
   });
