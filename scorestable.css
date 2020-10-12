@@ -1,0 +1,10 @@
+#maxscoresList{
+  list.style: none;
+  padding-left: 0;
+  /*to give space btn the home buttom and the scorelist*/
+  margin-bottom: 5rem;
+}
+.maxscores{
+  font-size: 1.8rem;
+  margin-bottom: 0.5;
+}

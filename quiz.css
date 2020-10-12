@@ -92,11 +92,13 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-color: black;
   }
-  input{
+input{
     margin-button: 1rem;
-    border: 0.1rem solid #FFFFFF;
+   font-color: black;
+   color: #A9A9A9;
     padding: 0.8rem ;
     font-size: 1.8rem;
-    box-shadow:  0.4rem 1.4rem #A9A9A9(169,169,169,0.5);
+
   }
