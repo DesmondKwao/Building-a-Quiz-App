@@ -3,6 +3,8 @@ const options = Array.from(document.getElementsByClassName("option-text"));
 const moveText = document.getElementById("moveText");
 const moveBarFull= document.getElementById("moveBarFull");
 const scoreText = document.getElementById("score");
+const loader = document.getElementById('loader');
+const StartQuiz = document.getElementById('StartQuiz');
 
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -59,6 +61,8 @@ startGame = () => {
   score = 0;
   NewQuesions = [...questions];
   getNewQuestion();
+  StartQuiz.classList.remove('hidden');
+    loader.classList.add('hidden');
 };
 getNewQuestion = () => {
   if (NewQuesions.length === 0 || questionCounter >= total_questions) {
@@ -67,8 +71,9 @@ getNewQuestion = () => {
   }
 
   questionCounter++;
-
-  console.log = (questionCounter/total_questions);
+  moveText.innerText = `Question ${questionCounter}/${total_questions}`;
+    //Update the moveBar
+    moveBarFull.style.width = `${(questionCounter / total_questions) * 100}%`;
 
   const questionIndex = Math.floor(Math.random() * NewQuesions.length);
   currentQuestion = NewQuesions[questionIndex];

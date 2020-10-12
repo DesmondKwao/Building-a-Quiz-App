@@ -1,0 +1,42 @@
+[
+  {
+      "question": "How many computer languages are in use?",
+      "option1": '2000',
+      "option2": '300',
+      "option3": '90',
+      "option4":  '500',
+      "answer": 1
+  },
+  {
+      "question": "What does the Internet prefix WWW stand for?",
+      "option1": "Wide Width Wickets",
+      "option2": "World wide web",
+      "option3": 'Worldwide',
+      "option4": "Western Washington World",
+      "answer": 2
+  },
+  {
+      "question": "How many computer languages are in use?",
+      "option1":'ENIAC',
+      "option2":'UNIVAC',
+      "option3":'NASA',
+      "option4":'SAGE',
+      "answer": 3
+  },
+  {
+      "question": "Which of these products is not made by the Apple Corporation?",
+      "option1": 'IMAX',
+      "option2": 'iPhone',
+      "option3":'iMac',
+      "option4":'iPod',
+      "answer": 1
+  },
+  {
+      "question": "To which of these devices is the cellular telephone most closely related?",
+      "option1": 'Telegraph',
+      "option2": 'Radio',
+      "option3": "Light bulb",
+      "option4": 'Telescope',
+      "answer": 2
+  }
+]
